@@ -36,13 +36,13 @@ console.log("First Player: " + firstPlayer);
 function getCard (number) {
   var c = deck[number];
   deck.splice(number, 1);
-  if (c == null) return getCard(randInt(52, 1));
+  if (c == null) return getCard(randInt(51, 0));
   return c;
 }
 
 for (p = 0; p < totalPlayers; p++) {
-  if (totalPlayers > 4) player[p] = {id:p, hand:[getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1))]};
-  else player[p] = {id:p, hand:[getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1)), getCard(randInt(52, 1))]};
+  if (totalPlayers > 4) player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0))]};
+  else player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(52, 0))]};
   console.log(player[p]);
 }
 </script>
