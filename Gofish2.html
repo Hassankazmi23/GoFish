@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<script>
+  var suit = [ "Clubs", "Diamonds", "Hearts", "Spades" ];
+var card = [ "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+var cards = [];
+var totalPlayers = 7;
+var initCards;
+var i = 0;
+var player = {};
+var firstPlayer;
+
+function setPlayer (t) {
+  totalPlayers = t;
+}
+
+if (totalPlayers > 4) initCards = 7;
+else initCards = 5;
+
+for (s = 0; s < suit.length; s++) {
+  for (c = 0; c < card.length; c++) {
+    cards[i] = suit[s] + " " + card[c];
+    //console.log(i + " " + cards[i]);
+    i++;
+  }
+}
+
+function randInt (max, min) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+firstPlayer = randInt(totalPlayers, 0);
+console.log(firstPlayer);
+
+function getCard (number) {
+  var c = cards[number];
+  cards.splice(number, 1);
+  if (c == null) return getCard(randInt(52, 1));
+  return c;
+}
+
+for (p = 0; p < totalPlayers; p++) {
+  if (totalPlayers > 4)player[p] = {id:p, cards:[getCard(randInt(52, 1)),getCard(randInt(52, 1)),getCard(randInt(52, 1)),getCard(randInt(52, 1)),getCard(randInt(52, 1))]};
+  console.log(player[p]);
+}
+</script>
+</body>
+</html>
