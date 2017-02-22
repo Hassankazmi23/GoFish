@@ -11,7 +11,6 @@ var suit = [ "Clubs", "Diamonds", "Hearts", "Spades" ];
 var card = [ "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
 var deck = [];
 var totalPlayers = 7;
-var i = 0;
 var player = {};
 var firstPlayer;
 
@@ -21,8 +20,7 @@ function setPlayer (t) {
 
 for (s = 0; s < suit.length; s++) {
   for (c = 0; c < card.length; c++) {
-    deck[i] = card[c] + " of " + suit[s];
-    i++;
+    deck.push(card[c] + " of " + suit[s]);
   }
 }
 
@@ -42,7 +40,7 @@ function getCard (number) {
 
 for (p = 0; p < totalPlayers; p++) {
   if (totalPlayers > 4) player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0))]};
-  else player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(52, 0))]};
+  else player[p] = { id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(52, 0))] };
   console.log(player[p]);
 }
 </script>
