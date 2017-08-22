@@ -7,41 +7,49 @@
 </head>
 <body>
 <script>
-var suit = [ "Clubs", "Diamonds", "Hearts", "Spades" ];
-var card = [ "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+var suit = [ "club", "diamond", "heart", "spade" ];
+var card = [ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" ];
 var deck = [];
 var totalPlayers = 7;
 var player = {};
 var firstPlayer;
 
 function setPlayer (t) {
-  totalPlayers = t;
+	totalPlayers = t;
 }
 
 for (s = 0; s < suit.length; s++) {
-  for (c = 0; c < card.length; c++) {
-    deck.push(card[c] + " of " + suit[s]);
-  }
+	for (c = 0; c < card.length; c++) {
+		deck.push(suit[s] + "_" + card[c]);
+	}
 }
 
 function randInt (max, min) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 firstPlayer = randInt(totalPlayers, 0);
 console.log("First Player: " + firstPlayer);
 
-function getCard (number) {
-  var c = deck[number];
-  deck.splice(number, 1);
-  if (c == null) return getCard(randInt(51, 0));
-  return c;
+function getCard (id) {
+	var c = deck[id];
+	deck.splice(id, 1);
+	if (c == null) return getCard(randInt(51, 0));
+	return c;
+}
+
+function photoLink (id) {
+	document.write('<img src="img/' + deck[id] + '.png" width=40 height=50></a>');
+}
+
+for (i = 0; i < 51; i++) {
+	photoLink(i);
 }
 
 for (p = 0; p < totalPlayers; p++) {
-  if (totalPlayers > 4) player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0))]};
-  else player[p] = { id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(52, 0))] };
-  console.log(player[p]);
+	if (totalPlayers > 4) player[p] = {id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0))]};
+	else player[p] = { id:p, hand:[getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(51, 0)), getCard(randInt(52, 0))] };
+	console.log(player[p]);
 }
 </script>
 </body>
